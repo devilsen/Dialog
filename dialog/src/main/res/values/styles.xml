@@ -4,10 +4,15 @@
         <item name="android:windowTitleStyle">@null</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowAnimationStyle">@style/BottomDialog.AnimationStyle</item>
         <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
     </style>
 
     <style name="BottomDialog" parent="BaseDialog">
+        <item name="android:windowAnimationStyle">@style/BottomDialog.AnimationStyle</item>
+    </style>
+
+    <style name="BottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
         <item name="android:windowAnimationStyle">@style/BottomDialog.AnimationStyle</item>
     </style>
 

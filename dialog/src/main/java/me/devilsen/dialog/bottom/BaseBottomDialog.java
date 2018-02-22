@@ -15,7 +15,7 @@ import me.devilsen.dialog.R;
  *
  * @author : dongSen
  */
-abstract class BaseBottomDialog extends BaseDialog {
+public abstract class BaseBottomDialog extends BaseDialog {
 
     private static final String TAG = "base_bottom_dialog";
 

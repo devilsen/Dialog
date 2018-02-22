@@ -25,7 +25,7 @@ public abstract class BaseDialog extends DialogFragment implements DialogInterfa
     private static final String KEY_DIM = "bottom_dim";
     private static final String KEY_CANCEL_OUTSIDE = "bottom_cancel_outside";
 
-    protected static final float DEFAULT_DIM = 0.2f;
+    protected static final float DEFAULT_DIM = 0.4f;
 
     private boolean mIsCancelOutside = true;
 
