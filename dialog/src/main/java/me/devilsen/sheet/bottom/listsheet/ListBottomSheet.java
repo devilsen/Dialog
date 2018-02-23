@@ -1,13 +1,13 @@
 package me.devilsen.sheet.bottom.listsheet;
 
+import android.content.Context;
 import android.support.annotation.MenuRes;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 
-import java.util.ArrayList;
-
-import me.devilsen.dialog.R;
+import me.devilsen.list.BottomListHelper;
+import me.devilsen.list.BottomListInterface;
+import me.devilsen.list.ItemClickListener;
 import me.devilsen.sheet.bottom.BaseBottomSheet;
 
 /**
@@ -16,36 +16,73 @@ import me.devilsen.sheet.bottom.BaseBottomSheet;
  *
  * @author : dongSen
  */
-public class ListBottomSheet extends BaseBottomSheet {
+public class ListBottomSheet extends BaseBottomSheet implements BottomListInterface {
 
-    private ListAdapter listAdapter;
+    private BottomListHelper bottomListHelper;
 
-//    private final ActionMenu menu;
+    public ListBottomSheet() {
+        bottomListHelper = new BottomListHelper(this);
+    }
 
     @Override
     public int getLayoutRes() {
-        return R.layout.layout_list_bottom_sheet;
+        return bottomListHelper.getLayoutRes();
     }
 
     @Override
     public void bindView(View view) {
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view_list_bottom_sheet);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.addItemDecoration(new LineItemDecoration(getContext()));
-
-        recyclerView.setAdapter(listAdapter);
+        bottomListHelper.bindView(getContext(), view);
     }
 
-    public void setData(ArrayList<String> data) {
-        if (listAdapter == null) {
-            listAdapter = new ListAdapter();
+    @Override
+    public void setData(Context context, @MenuRes int xmlRes) {
+        bottomListHelper.setData(context, xmlRes);
+    }
+
+    @Override
+    public void setItemClickListener(ItemClickListener itemClickListener) {
+        bottomListHelper.setItemClickListener(itemClickListener);
+    }
+
+    @Override
+    public void dismissDialog() {
+        dismiss();
+    }
+
+
+    public static class Builder {
+
+        private final Context context;
+
+        private final FragmentManager manager;
+
+        @MenuRes
+        private int xmlRes;
+
+        private ItemClickListener itemClickListener;
+
+        public Builder(Context context, FragmentManager manager) {
+            this.context = context;
+            this.manager = manager;
         }
 
-        listAdapter.setListData(data);
+        public Builder sheet(@MenuRes int xmlRes) {
+            this.xmlRes = xmlRes;
+            return this;
+        }
+
+        public Builder listener(ItemClickListener itemClickListener) {
+            this.itemClickListener = itemClickListener;
+            return this;
+        }
+
+        public ListBottomSheet build() {
+            ListBottomSheet listBottomSheet = new ListBottomSheet();
+            listBottomSheet.setData(context, xmlRes);
+            listBottomSheet.setItemClickListener(itemClickListener);
+            return listBottomSheet;
+        }
     }
 
-    public void test(@MenuRes int xmlRes){
-//        new MenuInflater(getContext()).inflate(xmlRes, );
-    }
+
 }

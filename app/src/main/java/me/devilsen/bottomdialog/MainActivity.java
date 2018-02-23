@@ -2,10 +2,10 @@ package me.devilsen.bottomdialog;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 
-import java.util.ArrayList;
-
+import me.devilsen.list.ItemClickListener;
 import me.devilsen.sheet.bottom.listsheet.ListBottomSheet;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,22 +20,26 @@ public class MainActivity extends AppCompatActivity {
 //        ShareBottomDialog shareBottomDialog = new ShareBottomDialog();
 //        shareBottomDialog.show(getSupportFragmentManager());
 
-//        BottomSheetFragment bottomSheetFragment = new BottomSheetFragment();
+//        ListBottomDialog bottomSheetFragment = new ListBottomDialog();
+//        bottomSheetFragment.setData(this, R.menu.create);
 //        bottomSheetFragment.show(getSupportFragmentManager(), bottomSheetFragment.getTag());
 
-        ListBottomSheet bottomSheetFragment = new ListBottomSheet();
+//        ListBottomSheet bottomSheetFragment = new ListBottomSheet();
+//        bottomSheetFragment.setData(this, R.menu.create);
+//        bottomSheetFragment.show(getSupportFragmentManager(), bottomSheetFragment.getTag());
 
-        ArrayList<String> list = new ArrayList<>();
-        list.add("1");
-        list.add("2");
-        list.add("3");
-        list.add("4");
-        list.add("5");
-        list.add("6");
+        ListBottomSheet sheet = new ListBottomSheet
+                .Builder(this, getSupportFragmentManager())
+                .sheet(R.menu.create)
+                .listener(new ItemClickListener() {
+                    @Override
+                    public void OnItemClickListener(MenuItem item) {
 
-        bottomSheetFragment.setData(list);
-        bottomSheetFragment.show(getSupportFragmentManager(), bottomSheetFragment.getTag());
+                    }
+                })
+                .build();
 
+        sheet.show(getSupportFragmentManager(), sheet.getTag());
 
     }
 

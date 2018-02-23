@@ -1,4 +1,4 @@
-package me.devilsen.sheet.bottom.listsheet;
+package me.devilsen.list;
 
 import android.content.Context;
 import android.content.Intent;
@@ -39,7 +39,7 @@ class ActionMenuItem implements SupportMenuItem {
     private Drawable mIconDrawable;
     private int mIconResId = NO_ICON;
     private Context mContext;
-    private SupportMenuItem.OnMenuItemClickListener mClickListener;
+    private OnMenuItemClickListener mClickListener;
     private int mFlags = ENABLED;
 
     public ActionMenuItem(Context context, int group, int id, int categoryOrder, int ordering,
@@ -267,7 +267,7 @@ class ActionMenuItem implements SupportMenuItem {
     }
 
     @Override
-    public MenuItem setOnActionExpandListener(MenuItem.OnActionExpandListener listener) {
+    public MenuItem setOnActionExpandListener(OnActionExpandListener listener) {
         throw new UnsupportedOperationException();
     }
 

@@ -1,13 +1,11 @@
-package me.devilsen.sheet.bottom.listsheet;
+package me.devilsen.list;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 
 import me.devilsen.dialog.R;
 
@@ -19,11 +17,11 @@ import me.devilsen.dialog.R;
  */
 class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
-    private ArrayList<String> listData;
+    private ActionMenu menus;
 
-    ListAdapter() {
-        listData = new ArrayList<>();
-    }
+    private ItemClickListener itemClickListener;
+
+    private DismissListener dismissListener;
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -33,17 +31,30 @@ class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.textView.setText(listData.get(position));
+        MenuItem item = menus.getItem(position);
+
+        if (item == null) {
+            return;
+        }
+
+        holder.textView.setText(item.getTitle());
     }
 
     @Override
     public int getItemCount() {
-        return listData == null ? 0 : listData.size();
+        return menus == null ? 0 : menus.size();
     }
 
-    void setListData(ArrayList<String> data) {
-        listData.clear();
-        listData.addAll(data);
+    void setListData(ActionMenu data) {
+        menus = data;
+    }
+
+    void setItemClickListener(ItemClickListener clickListener) {
+        this.itemClickListener = clickListener;
+    }
+
+    void setOnDismissListener(DismissListener dismissListener) {
+        this.dismissListener = dismissListener;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -61,8 +72,12 @@ class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         public void onClick(View v) {
             int position = getAdapterPosition();
 
-            if (position > -1) {
-                Log.e("test", listData.get(position));
+            if (position > -1 && itemClickListener != null) {
+                itemClickListener.OnItemClickListener(menus.getItem(position));
+            }
+
+            if (position > -1 && dismissListener != null) {
+                dismissListener.onDismiss();
             }
         }
     }

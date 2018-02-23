@@ -1,6 +1,6 @@
 <resources>
 
-    <style name="BaseDialog" parent="@android:style/Theme.Dialog">
+    <style name="BaseDialog" parent="Theme.Design.Light.BottomSheetDialog">
         <item name="android:windowTitleStyle">@null</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
@@ -13,6 +13,7 @@
     </style>
 
     <style name="BottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowAnimationStyle">@style/BottomDialog.AnimationStyle</item>
     </style>
 

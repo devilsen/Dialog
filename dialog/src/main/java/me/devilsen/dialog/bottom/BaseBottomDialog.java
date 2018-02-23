@@ -22,7 +22,7 @@ public abstract class BaseBottomDialog extends BaseDialog {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStyle(DialogFragment.STYLE_NO_TITLE, R.style.BottomDialog);
+        setStyle(DialogFragment.STYLE_NO_TITLE, R.style.BottomSheetDialog);
     }
 
     @Override
