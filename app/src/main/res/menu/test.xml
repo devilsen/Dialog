@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/share"
+        android:icon="@mipmap/share_qq_solid"
+        android:title="@string/share_qq" />
+    <item
+        android:id="@+id/upload"
+        android:icon="@mipmap/share_qqzone_solid"
+        android:title="@string/share_qq_zone" />
+    <item
+        android:id="@+id/call"
+        android:icon="@mipmap/share_wechat_solid"
+        android:title="@string/share_we_chat" />
+
+    <item
+        android:id="@+id/test"
+        android:icon="@mipmap/share_wechat_solid"
+        android:title="@string/share_we_chat" />
+</menu>

@@ -43,6 +43,11 @@ public class ListBottomDialog extends BaseBottomDialog implements BottomListInte
     }
 
     @Override
+    public void add(int id, int order, int textRes) {
+        bottomListHelper.add(id, order, textRes);
+    }
+
+    @Override
     public void dismissDialog() {
         dismiss();
     }

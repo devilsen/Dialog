@@ -2,6 +2,7 @@ package me.devilsen.sheet.bottom.listsheet;
 
 import android.content.Context;
 import android.support.annotation.MenuRes;
+import android.support.annotation.StringRes;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 
@@ -42,6 +43,11 @@ public class ListBottomSheet extends BaseBottomSheet implements BottomListInterf
     @Override
     public void setItemClickListener(ItemClickListener itemClickListener) {
         bottomListHelper.setItemClickListener(itemClickListener);
+    }
+
+    @Override
+    public void add(int id, int order, @StringRes int textRes) {
+        bottomListHelper.add(id, order, textRes);
     }
 
     @Override

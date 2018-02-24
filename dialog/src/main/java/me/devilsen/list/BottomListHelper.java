@@ -20,6 +20,7 @@ public class BottomListHelper implements DismissListener {
     private ListAdapter listAdapter;
 
     private BottomListInterface bottomListInterface;
+    private ActionMenu menu;
 
     public BottomListHelper(BottomListInterface bottomListInterface) {
         this.bottomListInterface = bottomListInterface;
@@ -40,7 +41,11 @@ public class BottomListHelper implements DismissListener {
     }
 
     public void setData(Context context, @MenuRes int xmlRes) {
-        ActionMenu menu = new ActionMenu(context);
+        if (menu == null) {
+            menu = new ActionMenu(context);
+        }else{
+            menu.clear();
+        }
 
         new MenuInflater(context).inflate(xmlRes, menu);
 
@@ -48,6 +53,8 @@ public class BottomListHelper implements DismissListener {
             listAdapter = new ListAdapter();
         }
         listAdapter.setListData(menu);
+
+        listAdapter.notifyDataSetChanged();
 
         listAdapter.setOnDismissListener(this);
     }
@@ -62,5 +69,9 @@ public class BottomListHelper implements DismissListener {
     @Override
     public void onDismiss() {
         bottomListInterface.dismissDialog();
+    }
+
+    public void add(int id, int order, int textRes) {
+        menu.add(0, id, order, textRes);
     }
 }

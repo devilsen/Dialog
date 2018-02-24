@@ -28,6 +28,9 @@ def developerEmail = properties.getProperty("developer.email")
 def bintrayUser = properties.getProperty("bintray.user")
 def bintrayApikey = properties.getProperty("bintray.apikey")
 
+def pkgUserOrg = properties.getProperty("bintray.pkg.userOrg")
+def pkgRepo = properties.getProperty("bintray.pkg.repo")
+
 def javadocName = properties.getProperty("javadoc.name")
 
 group = projectGroupId
@@ -106,7 +109,8 @@ bintray {
     key = bintrayApikey
     configurations = ['archives']
     pkg {
-        repo = "maven"
+        userOrg = pkgUserOrg
+        repo = pkgRepo
         name = projectName
         websiteUrl = projectSiteUrl
         vcsUrl = projectGitUrl
