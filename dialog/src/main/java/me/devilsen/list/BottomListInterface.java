@@ -1,8 +1,8 @@
 package me.devilsen.list;
 
 import android.content.Context;
-import android.support.annotation.MenuRes;
-import android.support.annotation.StringRes;
+import androidx.annotation.MenuRes;
+import androidx.annotation.StringRes;
 
 /**
  * desc :

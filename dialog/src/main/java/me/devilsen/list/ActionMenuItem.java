@@ -1,12 +1,16 @@
 package me.devilsen.list;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.internal.view.SupportMenuItem;
+
+import androidx.annotation.DrawableRes;
+import androidx.core.content.ContextCompat;
+import androidx.core.internal.view.SupportMenuItem;
+
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.SubMenu;
@@ -18,7 +22,7 @@ import android.view.View;
  *
  * @author : dongSen
  */
-class ActionMenuItem implements SupportMenuItem {
+class ActionMenuItem implements MenuItem {
 
 
     private static final int NO_ICON = 0;
@@ -147,9 +151,10 @@ class ActionMenuItem implements SupportMenuItem {
         return this;
     }
 
-    public MenuItem setIcon(int iconRes) {
+    @SuppressLint("ResourceType")
+    public MenuItem setIcon(@DrawableRes int iconRes) {
         mIconResId = iconRes;
-        if (iconRes>0)
+        if (iconRes > 0)
             mIconDrawable = ContextCompat.getDrawable(mContext, iconRes);
         return this;
     }
@@ -212,6 +217,11 @@ class ActionMenuItem implements SupportMenuItem {
         // Do nothing. ActionMenuItems always show as action buttons.
     }
 
+    @Override
+    public MenuItem setShowAsActionFlags(int actionEnum) {
+        return null;
+    }
+
     public SupportMenuItem setActionView(View actionView) {
         throw new UnsupportedOperationException();
     }
@@ -236,22 +246,6 @@ class ActionMenuItem implements SupportMenuItem {
     }
 
     @Override
-    public android.support.v4.view.ActionProvider getSupportActionProvider() {
-        return null;
-    }
-
-    @Override
-    public SupportMenuItem setSupportActionProvider(android.support.v4.view.ActionProvider actionProvider) {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public SupportMenuItem setShowAsActionFlags(int actionEnum) {
-        setShowAsAction(actionEnum);
-        return this;
-    }
-
-    @Override
     public boolean expandActionView() {
         return false;
     }
@@ -271,6 +265,11 @@ class ActionMenuItem implements SupportMenuItem {
         throw new UnsupportedOperationException();
     }
 
+    @Override
+    public MenuItem setContentDescription(CharSequence contentDescription) {
+        return null;
+    }
+
 ////    @Override
 //    public SupportMenuItem setSupportOnActionExpandListener(MenuItemCompat.OnActionExpandListener listener) {
 //        // No need to save the listener; ActionMenuItem does not support collapsing items.
@@ -278,18 +277,13 @@ class ActionMenuItem implements SupportMenuItem {
 //    }
 
     @Override
-    public SupportMenuItem setContentDescription(CharSequence contentDescription) {
-        return this;
-    }
-
-    @Override
     public CharSequence getContentDescription() {
         return null;
     }
 
     @Override
-    public SupportMenuItem setTooltipText(CharSequence tooltipText) {
-        return this;
+    public MenuItem setTooltipText(CharSequence tooltipText) {
+        return null;
     }
 
     @Override

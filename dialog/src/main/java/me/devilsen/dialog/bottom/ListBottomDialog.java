@@ -1,7 +1,7 @@
 package me.devilsen.dialog.bottom;
 
 import android.content.Context;
-import android.support.annotation.MenuRes;
+import androidx.annotation.MenuRes;
 import android.view.View;
 
 import me.devilsen.list.BottomListHelper;

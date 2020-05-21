@@ -1,9 +1,9 @@
 package me.devilsen.list;
 
 import android.content.Context;
-import android.support.annotation.MenuRes;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.MenuRes;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.MenuInflater;
 import android.view.View;
 

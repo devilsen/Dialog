@@ -1,6 +1,6 @@
 package me.devilsen.dialog;
 
-import android.support.v4.app.FragmentManager;
+import androidx.fragment.app.FragmentManager;
 
 /**
  * desc :

@@ -4,10 +4,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.view.MenuItem;
 import android.view.View;
 
+import me.devilsen.dialog.bottom.ListBottomDialog;
 import me.devilsen.list.ItemClickListener;
 import me.devilsen.sheet.bottom.listsheet.ListBottomSheet;
 
@@ -21,14 +25,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void showDialog(View view) {
-//        ShareBottomDialog shareBottomDialog = new ShareBottomDialog();
-//        shareBottomDialog.show(getSupportFragmentManager());
+    public void showShareBottomDialog(View view) {
+        ShareBottomDialog shareBottomDialog = new ShareBottomDialog();
+        shareBottomDialog.show(getSupportFragmentManager());
+    }
 
-//        ListBottomDialog bottomSheetFragment = new ListBottomDialog();
-//        bottomSheetFragment.setData(this, R.menu.create);
-//        bottomSheetFragment.show(getSupportFragmentManager(), bottomSheetFragment.getTag());
+    public void showListBottomDialog(View view) {
+        ListBottomDialog bottomDialog = new ListBottomDialog();
+        bottomDialog.setData(this, R.menu.create);
+        bottomDialog.show(getSupportFragmentManager(), bottomDialog.getTag());
+    }
 
+    // sheet与dialog最大的区别就是能滑动这个界面
+    public void showListBottomSheet(View view) {
 //        ListBottomSheet bottomSheetFragment = new ListBottomSheet();
 //        bottomSheetFragment.setData(this, R.menu.create);
 //        bottomSheetFragment.show(getSupportFragmentManager(), bottomSheetFragment.getTag());
@@ -44,18 +53,16 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .build();
 
-
         sheet.show(getSupportFragmentManager(), sheet.getTag());
-
         handler.sendEmptyMessageDelayed(1, 1000);
     }
 
-    Handler handler = new Handler(Looper.myLooper()) {
+    private final Handler handler = new Handler(new Handler.Callback() {
         @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
+        public boolean handleMessage(@NonNull Message msg) {
             sheet.setData(MainActivity.this, R.menu.test);
+            return true;
         }
-    };
+    });
 
 }

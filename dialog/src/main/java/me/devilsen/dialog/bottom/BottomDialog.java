@@ -1,7 +1,7 @@
 package me.devilsen.dialog.bottom;
 
-import android.support.annotation.LayoutRes;
-import android.support.v4.app.FragmentManager;
+import androidx.annotation.LayoutRes;
+import androidx.fragment.app.FragmentManager;
 import android.view.View;
 
 /**
