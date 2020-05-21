@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 //        bottomSheetFragment.show(getSupportFragmentManager(), bottomSheetFragment.getTag());
 
         sheet = new ListBottomSheet
-                .Builder(this, getSupportFragmentManager())
+                .Builder(this)
                 .sheet(R.menu.create)
                 .listener(new ItemClickListener() {
                     @Override
