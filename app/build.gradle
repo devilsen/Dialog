@@ -22,10 +22,10 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
-    implementation project(':dialog')
-//    implementation 'me.devilsen:bottomDialog:0.1'
+//    implementation project(':dialog')
+    implementation 'me.devilsen:dialog:0.2'
+    implementation 'com.google.android.material:material:1.1.0'
 
 }
